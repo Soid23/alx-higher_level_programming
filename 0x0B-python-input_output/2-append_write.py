@@ -4,5 +4,5 @@
 
 def append_write(filename="", text=""):
     """appends at end of text line"""
-    with open(filename, "a", encodimg"utf-8") as f:
+    with open(filename, "a", encoding"utf-8") as f:
         return f.write(text)

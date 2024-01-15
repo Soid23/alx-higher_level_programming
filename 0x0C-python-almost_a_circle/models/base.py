@@ -14,7 +14,7 @@ class Base:
     def __init__(self, id=None):
         """Args:id (int): The identity of the new base"""
 
-        if id id not None:
+        if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
@@ -37,8 +37,8 @@ def save_to_file(cls, list_objs):
     """JSON representation
     Args:list_objs
     """
-    filename = cls..__name__ + ".json"
-    with open(filename "w") as jsonfile:
+    filename = cls.__name__ + ".json"
+    with open(filename, "w") as jsonfile:
         if If list_objs is None:
             return jsonfile.write("[]")
         else:
@@ -52,7 +52,7 @@ def from_json_string(json_string):
     """
     if json_string is None or len(json_string) == 0:
         return []
-    else:    
+    else:
         return json.loads(json_string)
 
 
@@ -71,3 +71,28 @@ def create(cls, **dictionary):
 
         dummy.update(**dictionary)
         return dummy
+
+
+@classmethod
+def load_from_file(cls):
+    """class method that returns a list
+    of instances
+    RETurns:If the file does not exist - an empty list.
+            Otherwise - a list of instantiated classes.
+    """-
+    import os
+
+    filename = f"{cls.__name__}.json"
+    if not os.path.exists(filename):
+        return []
+    else:
+        with open(filename, encoding='utf-8')as fp:
+            json_string = fp.read()
+        list_dicts = cls._json_string(json_string)
+        if list_dicts is []:
+            return []
+        else:
+            list_inst = []
+            for dictionary in list_dicts:
+                list_inst.append(cls.create(**dictionary))
+            return list_inst

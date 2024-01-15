@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines a rectangle class"""
 
-from models.Base import Base
+from models.base import Base
 
 
 class Rectangle(Base):
@@ -21,18 +21,16 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
-        super.__init__(id)
+        super().__init__(id)
 
 
-@area
+
 def area(self):
     """Returns the area value of rect"""
     return self.width * self.height
 
 
-@publicmethod
 def display(self):
     """update class rectangle and 
     prints in stdout using # character
     """
-    if self.width

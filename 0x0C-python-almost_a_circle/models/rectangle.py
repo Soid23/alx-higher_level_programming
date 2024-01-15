@@ -24,13 +24,12 @@ class Rectangle(Base):
         super().__init__(id)
 
 
-
 def area(self):
     """Returns the area value of rect"""
     return self.width * self.height
 
 
 def display(self):
-    """update class rectangle and 
+    """update class rectangle and
     prints in stdout using # character
     """

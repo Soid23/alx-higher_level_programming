@@ -39,14 +39,14 @@ def save_to_file(cls, list_objs):
     """
     filename = cls.__name__ + ".json"
     with open(filename, "w") as jsonfile:
-        if If list_objs is None:
+        if list_objs is None:
             return jsonfile.write("[]")
         else:
             list_dicts = [o.to_dictionary() for o in list_objs]
             jsonfile.write(Base.to_json_string(list_dicts))
 
 
-@updatestaticmethod
+@staticmethod
 def from_json_string(json_string):
     """json_string represent dictonary
     """
@@ -79,7 +79,7 @@ def load_from_file(cls):
     of instances
     RETurns:If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
-    """-
+    """
     import os
 
     filename = f"{cls.__name__}.json"

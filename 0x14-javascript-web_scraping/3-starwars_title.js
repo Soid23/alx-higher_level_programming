@@ -11,4 +11,4 @@ request.get(url, (error, response, body) => {
     const content = JSON.parse(body);
     console.log(content.title);
   }
-})
+});
